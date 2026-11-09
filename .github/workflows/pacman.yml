@@ -1,5 +1,4 @@
-
-name: Nagi Pac-Man Contribution
+name: Nagi Contribution Snake
 
 on:
   workflow_dispatch:
@@ -13,10 +12,13 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - name: Generate Pac-Man Contribution Graph
-        uses: abozanona/pacman-contribution-graph@main
+      - name: Generate snake
+        uses: Platane/snk/svg-only@v3
         with:
-          github_user_name: seraphforge
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/nagi-snake.svg
+            dist/nagi-snake-dark.svg?palette=github-dark
 
       - name: Publish animation
         uses: crazy-max/ghaction-github-pages@v4
